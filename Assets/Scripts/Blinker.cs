@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections; // Required for Coroutines
+using System.Collections;
 
 public class Blinker : MonoBehaviour
 {
@@ -10,16 +10,14 @@ public class Blinker : MonoBehaviour
 
     void Start()
     {
-        // Get the Image component attached to this GameObject
         image = GetComponent<Image>();
 
-        // Start the continuous blinking routine
         StartCoroutine(BlinkSequence());
     }
 
     IEnumerator BlinkSequence()
     {
-        while (true) // Infinite loop to keep blinking
+        while (true) 
         {
             // 1. FADE OUT (Pop Out)
             yield return StartCoroutine(Fade(1f, 0f, fadeDuration)); // From fully visible (1) to invisible (0)
