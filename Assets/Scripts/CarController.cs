@@ -75,6 +75,6 @@ public class CarController : MonoBehaviour
         Vector2 targetVelocity = input * moveSpeed;
 
         // smoothness
-        rb.velocity = Vector2.Lerp(rb.velocity, targetVelocity, smoothness * Time.fixedDeltaTime);
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, smoothness * Time.fixedDeltaTime);
     }
 }
