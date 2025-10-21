@@ -115,9 +115,17 @@ public class CarController : MonoBehaviour
     
     public void AddTime(float seconds)
     {
-        Debug.Log($"Added {seconds} seconds to timer!");
-        // Connect to your timer system here
-        // Example: GameManager.instance.AddTime(seconds);
+        Debug.Log($"CarController.AddTime called with {seconds} seconds");
+    
+        if (GameTimer.instance != null)
+        {
+            Debug.Log("GameTimer instance found!");
+            GameTimer.instance.AddTime(seconds);
+        }
+        else
+        {
+            Debug.LogWarning("GameTimer instance not found!");
+        }
     }
     
     public void ApplyScoreMultiplier(float multiplier, float duration)
@@ -149,3 +157,4 @@ public class CarController : MonoBehaviour
         return hasShield;
     }
 }
+
