@@ -49,6 +49,7 @@
     <Compile Include="Assets\Scripts\CursorManager.cs" />
     <Compile Include="Assets\Scripts\SceneExitFlasher.cs" />
     <Compile Include="Assets\Scripts\HouseTrigger.cs" />
+    <Compile Include="Assets\Scripts\Boosters.cs" />
     <Compile Include="Assets\Scripts\ImageSequence.cs" />
     <Compile Include="Assets\Scripts\CameraFollow2D.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Assets\Scripts\DragItem.cs" />
     <Compile Include="Assets\Scripts\GamePauseManager.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\DirectionArrow.cs" />
     <Compile Include="Assets\Scripts\GameTimer.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

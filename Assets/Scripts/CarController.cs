@@ -1,25 +1,30 @@
 using UnityEngine;
+using System.Collections;
 
-// Remember to attach this script to a GameObject that has a SpriteRenderer and a Rigidbody2D.
 public class CarController : MonoBehaviour
 {
     public float moveSpeed = 5f;       // max speed
     public float smoothness = 10f;
 
     [Header("Visuals")]
-   
     public Sprite normalSprite;
     public Sprite leftSprite;
     public Sprite rightSprite;
 
+    [Header("Booster Settings")]
+    public float normalSpeed = 5f; // Keep this synced with moveSpeed
+    
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer; 
     private Vector2 input;
+    
+    // Booster variables
+    private bool hasShield = false;
+    private float scoreMultiplier = 1f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (spriteRenderer == null)
@@ -30,8 +35,8 @@ public class CarController : MonoBehaviour
         }
 
         rb.gravityScale = 0;
+        normalSpeed = moveSpeed; // Initialize normal speed
 
-        // Set the initial sprite to the normal one
         if (normalSprite != null)
         {
             spriteRenderer.sprite = normalSprite;
@@ -40,20 +45,18 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        // Input on keyboard
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
         input = input.normalized;
 
-        if (input.x > 0) // Moving right
+        if (input.x > 0)
         {
-            
             if (spriteRenderer.sprite != rightSprite)
             {
                 spriteRenderer.sprite = rightSprite;
             }
         }
-        else if (input.x < 0) // Moving left
+        else if (input.x < 0)
         {
             if (spriteRenderer.sprite != leftSprite)
             {
@@ -71,10 +74,78 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
-
         Vector2 targetVelocity = input * moveSpeed;
-
-        // smoothness
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, smoothness * Time.fixedDeltaTime);
+    }
+
+    // ===== BOOSTER METHODS =====
+    
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        StartCoroutine(SpeedBoostCoroutine(multiplier, duration));
+    }
+    
+    IEnumerator SpeedBoostCoroutine(float multiplier, float duration)
+    {
+        moveSpeed = normalSpeed * multiplier;
+        Debug.Log($"Speed Boost Active! Speed: {moveSpeed}");
+        
+        yield return new WaitForSeconds(duration);
+        
+        moveSpeed = normalSpeed;
+        Debug.Log("Speed Boost Ended");
+    }
+    
+    public void ApplyShield(float duration)
+    {
+        StartCoroutine(ShieldCoroutine(duration));
+    }
+    
+    IEnumerator ShieldCoroutine(float duration)
+    {
+        hasShield = true;
+        Debug.Log("Shield Active!");
+        // You can add visual effect here (change sprite color, add shield sprite, etc.)
+        
+        yield return new WaitForSeconds(duration);
+        
+        hasShield = false;
+        Debug.Log("Shield Ended");
+    }
+    
+    public void AddTime(float seconds)
+    {
+        Debug.Log($"Added {seconds} seconds to timer!");
+        // Connect to your timer system here
+        // Example: GameManager.instance.AddTime(seconds);
+    }
+    
+    public void ApplyScoreMultiplier(float multiplier, float duration)
+    {
+        StartCoroutine(ScoreMultiplierCoroutine(multiplier, duration));
+    }
+    
+    IEnumerator ScoreMultiplierCoroutine(float multiplier, float duration)
+    {
+        scoreMultiplier = multiplier;
+        Debug.Log($"Score Multiplier: x{multiplier}");
+        
+        yield return new WaitForSeconds(duration);
+        
+        scoreMultiplier = 1f;
+        Debug.Log("Score Multiplier Ended");
+    }
+    
+    public void AddScore(int points)
+    {
+        int finalScore = Mathf.RoundToInt(points * scoreMultiplier);
+        Debug.Log($"Score +{finalScore}");
+        // Connect to your score system here
+        // Example: GameManager.instance.AddScore(finalScore);
+    }
+    
+    public bool HasShield()
+    {
+        return hasShield;
     }
 }
