@@ -1006,6 +1006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BgMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 2427307805404856201, guid: a51977a9132f5b94b97a715db5063ca9, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: e2d190985bb2e764f877eaed8ef9e8d2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
