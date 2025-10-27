@@ -22,7 +22,7 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    // Public function to resume the game
+    // reuming the game
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -32,7 +32,7 @@ public class PauseManager : MonoBehaviour
         IsGamePaused = false;
     }
 
-    // Function to pause the game
+    // pause the game
     void Pause()
     {
         pauseMenuUI.SetActive(true);
