@@ -18,7 +18,6 @@ public class CursorManager : MonoBehaviour
         hoverHotspot = new Vector2(hoverCursor.width / 2, hoverCursor.height / 2);
         Cursor.SetCursor(defaultCursor, defaultHotspot, CursorMode.Auto);
 
-        // Automatically add hover events to all buttons
         Button[] buttons = FindObjectsOfType<Button>();
         foreach (Button btn in buttons)
         {

@@ -16,17 +16,14 @@ public class CameraFollow2D : MonoBehaviour
     {
         if (target == null) return;
 
-        // Desired camera position: follow target in X/Y, keep fixed Z
         Vector3 desired = new Vector3(target.position.x, target.position.y, zOffset);
 
         if (smoothSpeed <= 0f)
         {
-            // Instant snap
             transform.position = desired;
         }
         else
         {
-            // Smooth follow
             transform.position = Vector3.Lerp(transform.position, desired, smoothSpeed * Time.deltaTime);
         }
     }

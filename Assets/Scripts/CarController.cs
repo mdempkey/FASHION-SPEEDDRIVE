@@ -12,13 +12,13 @@ public class CarController : MonoBehaviour
     public Sprite rightSprite;
 
     [Header("Booster Settings")]
-    public float normalSpeed = 5f; // Keep this synced with moveSpeed
+    public float normalSpeed = 5f; 
     
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer; 
     private Vector2 input;
     
-    // Booster variables
+    // Boosters
     private bool hasShield = false;
     private float scoreMultiplier = 1f;
 
@@ -35,7 +35,7 @@ public class CarController : MonoBehaviour
         }
 
         rb.gravityScale = 0;
-        normalSpeed = moveSpeed; // Initialize normal speed
+        normalSpeed = moveSpeed; // going to normal speed
 
         if (normalSprite != null)
         {
@@ -78,7 +78,7 @@ public class CarController : MonoBehaviour
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, smoothness * Time.fixedDeltaTime);
     }
 
-    // ===== BOOSTER METHODS =====
+    // boosters
     
     public void ApplySpeedBoost(float multiplier, float duration)
     {
@@ -105,7 +105,6 @@ public class CarController : MonoBehaviour
     {
         hasShield = true;
         Debug.Log("Shield Active!");
-        // You can add visual effect here (change sprite color, add shield sprite, etc.)
         
         yield return new WaitForSeconds(duration);
         
@@ -148,8 +147,7 @@ public class CarController : MonoBehaviour
     {
         int finalScore = Mathf.RoundToInt(points * scoreMultiplier);
         Debug.Log($"Score +{finalScore}");
-        // Connect to your score system here
-        // Example: GameManager.instance.AddScore(finalScore);
+        
     }
     
     public bool HasShield()

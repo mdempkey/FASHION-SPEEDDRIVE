@@ -425,6 +425,7 @@
 "Assets/Scripts/OLDCameraFollow.cs"
 "Assets/Scripts/SceneExitFlasher.cs"
 "Assets/Scripts/SceneLoader.cs"
+"Assets/Scripts/StyleManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+

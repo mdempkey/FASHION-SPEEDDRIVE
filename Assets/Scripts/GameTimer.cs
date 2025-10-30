@@ -12,7 +12,6 @@ public class GameTimer : MonoBehaviour
     private float timeRemaining;
     private bool timerRunning = true;
 
-    // Singleton for easy access
     public static GameTimer instance;
 
     void Awake()

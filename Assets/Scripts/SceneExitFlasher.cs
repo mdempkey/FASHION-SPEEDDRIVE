@@ -6,7 +6,7 @@ public class SceneExitFlasher : MonoBehaviour
 {
     [Header("Flashing Settings")]
     [Tooltip("How quickly the sprite toggles visibility (smaller number is faster flash).")]
-    public float flashRate = 0.25f; // Slower rate than damage flash, for better visibility
+    public float flashRate = 0.25f; 
 
     [Header("Scene Transition Settings")]
     [Tooltip("The name of the scene to load when the player enters this trigger. Set to 'FashionScene' by default.")]
@@ -33,13 +33,10 @@ public class SceneExitFlasher : MonoBehaviour
    
     IEnumerator ContinuousFlash()
     {
-        // Loop forever, as the exit should flash constantly
         while (true)
         {
-            // Toggle the visibility of the sprite
             spriteRenderer.enabled = !spriteRenderer.enabled;
 
-            // Wait for the specified flash rate before the next toggle
             yield return new WaitForSeconds(flashRate);
         }
     }
@@ -51,10 +48,8 @@ public class SceneExitFlasher : MonoBehaviour
         {
             Debug.Log("Player reached the exit! Loading scene: " + nextSceneName);
             
-            // 1. Stop the flashing effect (optional, but good practice)
             StopAllCoroutines(); 
             
-            // 2. Load the next scene, using the public variable set in the Inspector.
             SceneManager.LoadScene(nextSceneName);
         }
     }
