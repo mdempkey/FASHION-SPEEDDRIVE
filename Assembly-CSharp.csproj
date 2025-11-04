@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\DragItem.cs" />
     <Compile Include="Assets\Scripts\GamePauseManager.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\DirectionArrow.cs" />
     <Compile Include="Assets\Scripts\GameTimer.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

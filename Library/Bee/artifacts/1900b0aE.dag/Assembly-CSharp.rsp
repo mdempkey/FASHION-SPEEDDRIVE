@@ -419,6 +419,7 @@
 "Assets/Scripts/DirectionArrow.cs"
 "Assets/Scripts/DraggableItem.cs"
 "Assets/Scripts/DragItem.cs"
+"Assets/Scripts/DropZone.cs"
 "Assets/Scripts/GamePauseManager.cs"
 "Assets/Scripts/GameTimer.cs"
 "Assets/Scripts/HouseTrigger.cs"
