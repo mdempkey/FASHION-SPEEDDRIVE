@@ -54,6 +54,6 @@ public class StyleManager : MonoBehaviour
     void UpdateStylePointsUI()
     {
         if (stylePointsText != null)
-            stylePointsText.text = "Style Points: " + stylePoints;
+            stylePointsText.text = "-" + stylePoints;
     }
 }

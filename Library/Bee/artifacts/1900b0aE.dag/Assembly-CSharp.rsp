@@ -417,6 +417,7 @@
 "Assets/Scripts/CarController.cs"
 "Assets/Scripts/CursorManager.cs"
 "Assets/Scripts/DirectionArrow.cs"
+"Assets/Scripts/DraggableItem.cs"
 "Assets/Scripts/DragItem.cs"
 "Assets/Scripts/GamePauseManager.cs"
 "Assets/Scripts/GameTimer.cs"
