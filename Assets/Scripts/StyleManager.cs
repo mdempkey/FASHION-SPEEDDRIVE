@@ -41,14 +41,14 @@ public class StyleManager : MonoBehaviour
 
         if (top == "disco_jacket")
             score += 50;
-        if (shoes == "heels_glitter")
+        if (shoes == "disco_shoes")
             score += 20;
-        if (accessory == "heart_bag")
+        if (accessory == "disco_glasses")
             score += 10;
-        if (accessory == "disco_pants")
+        if (pants == "disco_pants")
             score += 40;
 
-        if (top == "pink_jacket" && pants == "sparkle_pants" && shoes == "heels_glitter" && accessory == "heart_bag")
+        if (top == "disco_jacket" && pants == "disco_pants" && shoes == "disco_shoes" && accessory == "disco_glasses")
             score += 30;
 
         stylePoints = score;
