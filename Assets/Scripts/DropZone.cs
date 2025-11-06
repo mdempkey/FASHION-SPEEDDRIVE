@@ -3,20 +3,33 @@ using UnityEngine.EventSystems;
 
 public class DropZone : MonoBehaviour, IDropHandler
 {
-    public string acceptedCategory; // e.g. "top", "pants", etc.
+    public string acceptedCategory;
     public StyleManager styleManager;
 
     public void OnDrop(PointerEventData eventData)
     {
-        DraggableItem item = eventData.pointerDrag.GetComponent<DraggableItem>();
-        if (item != null && item.category == acceptedCategory)
-        {
-            // Move item into slot
-            item.transform.SetParent(transform);
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        DraggableItem draggedItem = eventData.pointerDrag.GetComponent<DraggableItem>();
 
-            // Update style manager
-            styleManager.SelectOutfitPiece(item.category, item.itemName);
+        if (draggedItem == null) return;
+
+        // Only accept if the category matches
+        if (draggedItem.category.ToLower() == acceptedCategory.ToLower())
+        {
+            // Snap item into this slot
+            draggedItem.transform.SetParent(transform, true);
+            draggedItem.transform.localPosition = Vector3.zero;
+
+            // Tell StyleManager what was placed
+            if (styleManager != null)
+            {
+                styleManager.SelectOutfitPiece(acceptedCategory, draggedItem.itemName);
+            }
+
+            Debug.Log($"✅ {draggedItem.itemName} placed in {acceptedCategory} slot.");
+        }
+        else
+        {
+            Debug.Log($"❌ Wrong category: {draggedItem.category} can't go in {acceptedCategory}.");
         }
     }
 }

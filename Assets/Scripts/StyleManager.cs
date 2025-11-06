@@ -1,18 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System.Collections;
 
 public class StyleManager : MonoBehaviour
 {
     public int stylePoints = 0;
-    public TMP_Text stylePointsText;  
+    public TMP_Text stylePointsText;
 
     [Header("Current Outfit")]
     public string top;
     public string pants;
     public string shoes;
     public string accessory;
+
+    private int lastPoints = 0;
+    private Coroutine popCoroutine;
 
     void Start()
     {
@@ -36,15 +39,16 @@ public class StyleManager : MonoBehaviour
     {
         int score = 0;
 
-        if (top == "pink_jacket" && pants == "sparkle_skirt")
+        if (top == "disco_jacket")
             score += 50;
         if (shoes == "heels_glitter")
             score += 20;
         if (accessory == "heart_bag")
             score += 10;
+        if (accessory == "disco_pants")
+            score += 40;
 
-// extra bouns
-        if (top == "pink_jacket" && pants == "sparkle_skirt" && shoes == "heels_glitter" && accessory == "heart_bag")
+        if (top == "pink_jacket" && pants == "sparkle_pants" && shoes == "heels_glitter" && accessory == "heart_bag")
             score += 30;
 
         stylePoints = score;
@@ -53,7 +57,49 @@ public class StyleManager : MonoBehaviour
 
     void UpdateStylePointsUI()
     {
-        if (stylePointsText != null)
-            stylePointsText.text = "-" + stylePoints;
+        if (stylePointsText == null)
+        {
+            Debug.LogWarning("StyleManager: TMP text not assigned!");
+            return;
+        }
+
+        stylePointsText.text = stylePoints.ToString();
+
+        // Only animate if value changed
+        if (stylePoints != lastPoints)
+        {
+            if (popCoroutine != null)
+                StopCoroutine(popCoroutine);
+            popCoroutine = StartCoroutine(PopTextEffect());
+        }
+
+        lastPoints = stylePoints;
+    }
+
+    IEnumerator PopTextEffect()
+    {
+        float duration = 0.3f;
+        float time = 0;
+        Vector3 originalScale = stylePointsText.rectTransform.localScale;
+        Vector3 targetScale = originalScale * 1.3f;
+
+        // Scale up
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            stylePointsText.rectTransform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            yield return null;
+        }
+
+        // Scale back
+        time = 0;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            stylePointsText.rectTransform.localScale = Vector3.Lerp(targetScale, originalScale, t);
+            yield return null;
+        }
     }
 }

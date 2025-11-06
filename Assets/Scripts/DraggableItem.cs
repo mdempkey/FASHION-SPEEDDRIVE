@@ -1,20 +1,18 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Canvas canvas;
-    private RectTransform rectTransform;
+    [Header("Item Info")]
+    public string category;
+    public string itemName;
+
     private CanvasGroup canvasGroup;
     private Transform originalParent;
-
-    public string category; // e.g. "top", "pants", "shoes", "accessory"
-    public string itemName; // e.g. "pink_jacket"
+    private Canvas canvas;
 
     void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GetComponentInParent<Canvas>();
     }
@@ -22,18 +20,25 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         originalParent = transform.parent;
-        transform.SetParent(canvas.transform); // bring to front while dragging
-        canvasGroup.blocksRaycasts = false;    // let raycasts pass through
+        transform.SetParent(canvas.transform, true);
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        // Move item following the mouse
+        transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(originalParent);   // go back if not dropped
         canvasGroup.blocksRaycasts = true;
+
+        // If not dropped onto a DropZone, go back
+        if (transform.parent == canvas.transform)
+        {
+            transform.SetParent(originalParent, true);
+            transform.localPosition = Vector3.zero;
+        }
     }
 }
