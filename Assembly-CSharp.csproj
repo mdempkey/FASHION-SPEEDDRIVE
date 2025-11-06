@@ -56,12 +56,12 @@
     <Compile Include="Assets\Scripts\CameraFollow2D.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\OLDCameraFollow.cs" />
-    <Compile Include="Assets\Scripts\RandomFadeInImages.cs" />
     <Compile Include="Assets\Scripts\Blinker.cs" />
     <Compile Include="Assets\Scripts\DragItem.cs" />
     <Compile Include="Assets\Scripts\GamePauseManager.cs" />
     <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\DropZone.cs" />
+    <Compile Include="Assets\Scripts\PopcornFadeAnimator_Fixed.cs" />
     <Compile Include="Assets\Scripts\DirectionArrow.cs" />
     <Compile Include="Assets\Scripts\GameTimer.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
