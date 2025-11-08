@@ -1,16 +1,18 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // for scene loading
 using System.Collections;
-
 
 public class StyleManager : MonoBehaviour
 {
+    [Header("Points & UI")]
     public int stylePoints = 0;
     public TMP_Text stylePointsText;
+
+    [Header("Sounds")]
     public AudioSource completeSound;
     public AudioSource pointSound;
-
 
     [Header("Current Outfit")]
     public string top;
@@ -28,6 +30,10 @@ public class StyleManager : MonoBehaviour
     public Image pantsSlot;
     public Image shoesSlot;
     public Image accessorySlot;
+
+    [Header("Scene Transition")]
+    public string nextSceneName = "PartyScene"; // set in Inspector
+    public float sceneDelay = 3f; // seconds before switching
 
     private int lastPoints = 0;
     private Coroutine popCoroutine;
@@ -103,9 +109,26 @@ public class StyleManager : MonoBehaviour
 
         Debug.Log("✨ Full outfit complete! Styled look applied and slots cleared!");
         
+        // 🎵 Play success sound
         if (completeSound != null)
             completeSound.Play();
 
+        // ⏳ Go to next scene after a short delay
+        StartCoroutine(GoToNextSceneAfterDelay());
+    }
+
+    IEnumerator GoToNextSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(sceneDelay);
+
+        if (!string.IsNullOrEmpty(nextSceneName))
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogWarning("Next scene name not set in StyleManager!");
+        }
     }
 
     void ClearSlotImage(Image slot)
@@ -113,18 +136,15 @@ public class StyleManager : MonoBehaviour
         if (slot != null)
         {
             StartCoroutine(FadeOutSlot(slot));
-            slot.gameObject.SetActive(false); // 👈 hides the slot entirely
+            slot.gameObject.SetActive(false); // hide the slot entirely
         }
     }
-
 
     IEnumerator FadeOutSlot(Image slot)
     {
         float duration = 0.3f;
         float time = 0f;
         Color color = slot.color;
-
-        Sprite originalSprite = slot.sprite;
 
         while (time < duration)
         {
@@ -190,7 +210,6 @@ public class StyleManager : MonoBehaviour
 
         lastPoints = stylePoints;
     }
-
 
     IEnumerator PopTextEffect()
     {

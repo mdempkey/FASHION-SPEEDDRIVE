@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
   category: pants
-  itemName: disco_pants
+  itemName: beach_pants
 --- !u!225 &13129388
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
   category: accessory
-  itemName: disco_glasses
+  itemName: beach_glasses
 --- !u!225 &239916865
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 539986414}
   - component: {fileID: 539986415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AboutScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &767634791
 RectTransform:
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
   category: top
-  itemName: disco_jacket
+  itemName: beach_shirt
 --- !u!225 &842815537
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
   category: top
-  itemName: disco_jacket
+  itemName: _jacket
 --- !u!225 &896096696
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7062,7 +7062,7 @@ GameObject:
   - component: {fileID: 1115597002}
   - component: {fileID: 1115597004}
   - component: {fileID: 1115597003}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7500,7 +7500,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1217957258
 RectTransform:
@@ -7785,7 +7785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
   category: shoes
-  itemName: disco_shoes
+  itemName: beach_shoes
 --- !u!225 &1295600998
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8464,7 +8464,7 @@ GameObject:
   - component: {fileID: 1631535986}
   - component: {fileID: 1631535985}
   - component: {fileID: 1631535984}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9314,6 +9314,8 @@ MonoBehaviour:
   pantsSlot: {fileID: 1593154821}
   shoesSlot: {fileID: 182912326}
   accessorySlot: {fileID: 782331297}
+  nextSceneName: EndScreen
+  sceneDelay: 3
 --- !u!4 &2095322667
 Transform:
   m_ObjectHideFlags: 0
@@ -9475,6 +9477,6 @@ SceneRoots:
   - {fileID: 869048047}
   - {fileID: 2095322667}
   - {fileID: 767634791}
-  - {fileID: 1631535987}
   - {fileID: 1008880146}
   - {fileID: 2116641219}
+  - {fileID: 1631535987}
