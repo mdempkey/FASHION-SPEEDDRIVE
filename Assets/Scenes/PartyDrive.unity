@@ -829,7 +829,7 @@ Transform:
   m_GameObject: {fileID: 351756538}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -15, y: -4, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1879,19 +1879,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6904209482189129376, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6904209482189129376, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6904209482189129376, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.5
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 6904209482189129376, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 6904209482189129376, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1924,6 +1924,42 @@ PrefabInstance:
     - target: {fileID: 6904209482189129376, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677081346391935111, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1809772208086990585, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
@@ -2679,7 +2715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashRate: 0.25
-  nextSceneName: FashionScene
+  nextSceneName: EndScreen
   playerTag: Player
 --- !u!212 &1982192766
 SpriteRenderer:
@@ -2728,7 +2764,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 07c11c1111fb3c646b287d02e748aa86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6ba88c70f46bed478080a04203f662f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

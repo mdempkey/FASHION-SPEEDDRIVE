@@ -29,5 +29,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: ed417c5517b1af1499f6836db6ad894e
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 3b32717fc72022542823dad397e6950e
+  - enabled: 1
+    path: Assets/Scenes/PartyDrive.unity
+    guid: e788a483968420742ad70c4a35a436d9
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

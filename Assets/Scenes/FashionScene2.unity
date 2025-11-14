@@ -9574,7 +9574,7 @@ MonoBehaviour:
   pantsSlot: {fileID: 1593154821}
   shoesSlot: {fileID: 182912326}
   accessorySlot: {fileID: 782331297}
-  nextSceneName: EndScreen
+  nextSceneName: PartyDrive
   sceneDelay: 3
 --- !u!4 &2095322667
 Transform:
