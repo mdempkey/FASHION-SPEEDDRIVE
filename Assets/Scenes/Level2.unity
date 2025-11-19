@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9864fb87fceb07245b29161e0bf51f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boosters
-  boosterType: 3
+  boosterType: 4
   duration: 5
   value: 50
   pickupEffect: {fileID: 0}

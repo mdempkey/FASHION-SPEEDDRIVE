@@ -39,6 +39,11 @@ public class StyleManager : MonoBehaviour
     private Coroutine popCoroutine;
     private bool outfitComplete = false;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+    
     void Start()
     {
         UpdateStylePointsUI();
@@ -188,7 +193,7 @@ public class StyleManager : MonoBehaviour
         }
     }
 
-    void UpdateStylePointsUI()
+    public void UpdateStylePointsUI()
     {
         if (stylePointsText == null)
         {
