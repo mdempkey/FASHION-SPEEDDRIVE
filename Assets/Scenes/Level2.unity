@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boosters
   boosterType: 4
-  duration: 5
+  duration: 15
   value: 50
   pickupEffect: {fileID: 0}
   pickupSound: {fileID: 8300000, guid: 9ecb16b42591e9a40b6892818e5d75b9, type: 3}
@@ -2416,6 +2416,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6904209482189129376, guid: 06d5fe7ba8b94ac4d84a15b09e54636d, type: 3}
   m_PrefabInstance: {fileID: 1149197865}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1227129403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1227129405}
+  - component: {fileID: 1227129404}
+  m_Layer: 0
+  m_Name: StyleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1227129404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227129403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdca87b1f52c0b54da2e956b00e8c9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StyleManager
+  stylePoints: 0
+  stylePointsText: {fileID: 669890069}
+  completeSound: {fileID: 0}
+  pointSound: {fileID: 0}
+  top: 
+  pants: 
+  shoes: 
+  accessory: 
+  characterDisplay: {fileID: 0}
+  defaultCharacterSprite: {fileID: 21300000, guid: aa925079d6e815c4388ebbc63d9f26ea, type: 3}
+  styledCharacterSprite: {fileID: 21300000, guid: 15e1be5f0138c3a45ac879cbb05d0d7c, type: 3}
+  topSlot: {fileID: 0}
+  pantsSlot: {fileID: 0}
+  shoesSlot: {fileID: 0}
+  accessorySlot: {fileID: 0}
+  nextSceneName: PartyDrive
+  sceneDelay: 3
+--- !u!4 &1227129405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227129403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05079, y: 0, z: 0.13222}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314327305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,7 +3288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashRate: 0.25
-  nextSceneName: GameOverScene
+  nextSceneName: BeachFashion
   playerTag: Player
 --- !u!212 &1982192766
 SpriteRenderer:
@@ -3308,3 +3369,4 @@ SceneRoots:
   - {fileID: 399259214}
   - {fileID: 76467506}
   - {fileID: 205309331}
+  - {fileID: 1227129405}
