@@ -716,7 +716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &211410206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1929,6 +1929,9 @@ MonoBehaviour:
   firstImage: {fileID: 2800000, guid: d084b70e92ef0a54e9f6b9bbbecc0921, type: 3}
   secondImage: {fileID: 2800000, guid: eab8ee1155b77194c86e801eedde393d, type: 3}
   firstCanvas: {fileID: 1592417547}
+  nextCanvas: {fileID: 211410205}
+  fadeDuration: 1
+  displayTime: 5
 --- !u!4 &769428206
 Transform:
   m_ObjectHideFlags: 0
@@ -1960,6 +1963,9 @@ MonoBehaviour:
   firstImage: {fileID: 2800000, guid: 5e40b371b4b650540b61051370ba483b, type: 3}
   secondImage: {fileID: 2800000, guid: 802cd63562c87b24ba6f236092ab8e4f, type: 3}
   firstCanvas: {fileID: 1592417547}
+  nextCanvas: {fileID: 0}
+  fadeDuration: 1
+  displayTime: 5
 --- !u!1 &813420042
 GameObject:
   m_ObjectHideFlags: 0

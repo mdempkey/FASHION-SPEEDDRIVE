@@ -35,5 +35,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PartyDrive.unity
     guid: e788a483968420742ad70c4a35a436d9
+  - enabled: 1
+    path: Assets/Scenes/BeachFashion.unity
+    guid: 593b9bdbe21db2941925f718c84c33f9
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
