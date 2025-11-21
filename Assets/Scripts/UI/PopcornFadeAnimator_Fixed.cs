@@ -3,25 +3,21 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PopcornFadeAnimator_Fixed : MonoBehaviour
+public class PopcornFadeAnimator : MonoBehaviour
 {
-    [Header("Timing Settings")]
-    public float startDelay = 0f;       // Wait before starting the whole animation
-    public float minDelay = 0.05f;      // Minimum delay between each image start
-    public float maxDelay = 0.3f;       // Maximum delay between each image start
-    public float fadeDuration = 0.5f;   // Time for the fade animation
-    public float popScale = 1.15f;      // How much the image pops (1 = none)
-    public float popDuration = 0.3f;    // (unused for now, keep for future)
-
-    [Header("Options")]
-    public bool randomizeSpritesInGrid = false; // If true, shuffle sprites between slots before animating
-    public bool randomizeAnimationOrder = true; // If true, animation order is randomized (should be)
+    public float startDelay = 0f;
+    public float minDelay = 0.05f;
+    public float maxDelay = 0.3f;
+    public float fadeDuration = 0.5f;
+    public float popScale = 1.15f;
+    public bool randomizeSpritesInGrid = false;
+    public bool randomizeAnimationOrder = true;
 
     private List<Image> images = new List<Image>();
 
     void Start()
     {
-        // Gather only direct-child Images (safe)
+        // Collect all child images
         images.Clear();
         foreach (Transform child in transform)
         {
@@ -30,15 +26,15 @@ public class PopcornFadeAnimator_Fixed : MonoBehaviour
             {
                 images.Add(img);
 
-                // Start transparent and slightly smaller visually (doesn't change layout)
+                // Start transparent and small
                 Color c = img.color;
                 c.a = 0;
                 img.color = c;
-                img.transform.localScale = Vector3.one * 0.92f; // subtle small start
+                img.transform.localScale = Vector3.one * 0.92f;
             }
         }
 
-        // Optionally shuffle sprites between the slots (visual shuffle)
+        // Shuffle sprites if enabled
         if (randomizeSpritesInGrid)
             ShuffleSpritesBetweenSlots();
 
@@ -49,7 +45,6 @@ public class PopcornFadeAnimator_Fixed : MonoBehaviour
         StartCoroutine(AnimateImages());
     }
 
-    // Fisher-Yates shuffle for the list (correct uniform shuffle)
     void FisherYatesShuffle<T>(List<T> list)
     {
         for (int i = list.Count - 1; i > 0; i--)
@@ -61,20 +56,17 @@ public class PopcornFadeAnimator_Fixed : MonoBehaviour
         }
     }
 
-    // Shuffle sprites between image slots (keeps each child in place but swaps sprites)
     void ShuffleSpritesBetweenSlots()
     {
         if (images.Count < 2) return;
 
-        // Extract sprites
+        // Get all sprites
         List<Sprite> sprites = new List<Sprite>();
         foreach (var img in images)
             sprites.Add(img.sprite);
 
-        // Shuffle sprite list
+        // Shuffle and reassign
         FisherYatesShuffle(sprites);
-
-        // Reassign shuffled sprites back to images
         for (int i = 0; i < images.Count; i++)
             images[i].sprite = sprites[i];
     }
@@ -83,7 +75,7 @@ public class PopcornFadeAnimator_Fixed : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelay);
 
-        // If we want a non-blocking visual effect, start coroutines with staggered starts
+        // Fade each image with random delay
         foreach (Image img in images)
         {
             StartCoroutine(FadeAndPop(img));
@@ -105,17 +97,17 @@ public class PopcornFadeAnimator_Fixed : MonoBehaviour
             elapsed += Time.deltaTime;
             float tNorm = Mathf.Clamp01(elapsed / fadeDuration);
 
-            // Fade in alpha
-            c.a = Mathf.Lerp(0, 1, Mathf.SmoothStep(0,1,tNorm));
+            // Fade in
+            c.a = Mathf.Lerp(0, 1, Mathf.SmoothStep(0, 1, tNorm));
             img.color = c;
 
-            // Slight scale up (subtle pop) — stays close to 1 so layout won't change much
+            // Scale up slightly
             t.localScale = Vector3.Lerp(startScale, targetScale, Mathf.SmoothStep(0, 1, tNorm));
 
             yield return null;
         }
 
-        // Finalize to normal scale
+        // Set to final state
         c.a = 1;
         img.color = c;
         t.localScale = Vector3.one;

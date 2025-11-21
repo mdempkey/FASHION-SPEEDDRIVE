@@ -8,15 +8,12 @@ public class Boosters : MonoBehaviour
         Shield,
         TimeBonus,
         ScoreMultiplier,
-        StylePoints   // ⭐ NEW booster type
+        StylePoints
     }
 
     public BoosterType boosterType;
-
-    public float duration = 5f;   // for timed effects
-    public float value = 2f;      // amount of boost or points
-
-    [Header("Effects")]
+    public float duration = 5f;
+    public float value = 2f;
     public GameObject pickupEffect;
     public AudioClip pickupSound;
 
@@ -24,13 +21,12 @@ public class Boosters : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Try to get the car controller (for speed, shield, etc.)
             CarController player = other.GetComponent<CarController>();
-
-            // Activate booster
+            
+            // Apply booster effect
             ActivateBooster(player);
-
-            // Particle effect
+            
+            // Spawn pickup effect
             if (pickupEffect != null)
                 Instantiate(pickupEffect, transform.position, Quaternion.identity);
 
@@ -39,17 +35,13 @@ public class Boosters : MonoBehaviour
             {
                 GameObject soundObj = new GameObject("PickupSound");
                 AudioSource source = soundObj.AddComponent<AudioSource>();
-
                 source.clip = pickupSound;
                 source.volume = 1.5f;
                 source.spatialBlend = 0f;
-                source.pitch = 1.0f;
                 source.Play();
-
                 Destroy(soundObj, pickupSound.length);
             }
 
-            // Destroy booster object
             Destroy(gameObject);
         }
     }
@@ -91,12 +83,12 @@ public class Boosters : MonoBehaviour
         if (manager != null)
         {
             manager.stylePoints += amount;
-            manager.UpdateStylePointsUI(); // plays sound + anim
-            Debug.Log("⭐ Booster added " + amount + " style points!");
+            manager.UpdateStylePointsUI();
+            Debug.Log("Booster added " + amount + " style points");
         }
         else
         {
-            Debug.LogWarning("❗ StyleManager not found in scene!");
+            Debug.LogWarning("StyleManager not found in scene");
         }
     }
 }

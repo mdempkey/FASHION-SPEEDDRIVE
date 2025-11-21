@@ -6,9 +6,9 @@ public class DirectionArrow : MonoBehaviour
     public RawImage arrowImage;
     public Transform playerBus;
     public Transform currentTarget;
-    public Camera gameCamera; // Assign your main camera
+    public Camera gameCamera;
     
-    public float rotationOffset = 0f; // Adjust based on arrow sprite orientation
+    public float rotationOffset = 0f; 
 
     void Update()
     {

@@ -7,17 +7,16 @@ public class ImageSequence : MonoBehaviour
     public RawImage canvasImage;
     public Texture firstImage;
     public Texture secondImage;
-
-    public GameObject firstCanvas;   // Dialogue canvas
-    public GameObject nextCanvas;    // Canvas that appears AFTER
-
+    public GameObject firstCanvas;
+    public GameObject nextCanvas;
     public float fadeDuration = 1f;
-    public float displayTime = 5f;   // Time each image stays fully visible
+    public float displayTime = 5f;
 
     private CanvasGroup cg;
 
     void Start()
     {
+        // Get or add CanvasGroup for fading
         cg = firstCanvas.GetComponent<CanvasGroup>();
         if (cg == null)
         {
@@ -29,11 +28,10 @@ public class ImageSequence : MonoBehaviour
 
     IEnumerator ShowImageSequence()
     {
-        // Start with dialogue canvas
         firstCanvas.SetActive(true);
         nextCanvas.SetActive(false);
 
-        // First image
+        // Show first image
         canvasImage.texture = firstImage;
         canvasImage.gameObject.SetActive(true);
 
@@ -41,17 +39,15 @@ public class ImageSequence : MonoBehaviour
         yield return new WaitForSeconds(displayTime);
         yield return StartCoroutine(FadeOut());
 
-        // Second image
+        // Show second image
         canvasImage.texture = secondImage;
 
         yield return StartCoroutine(FadeIn());
         yield return new WaitForSeconds(displayTime);
         yield return StartCoroutine(FadeOut());
 
-        // Hide dialogue canvas
+        // Switch to next canvas
         firstCanvas.SetActive(false);
-
-        // Show next canvas (no fade needed, unless you want it)
         nextCanvas.SetActive(true);
     }
 

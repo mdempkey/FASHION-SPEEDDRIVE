@@ -20,7 +20,7 @@ public class PersistentStyleManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Register UI from scene-specific manager
+    // looks for sences
     public void RegisterSceneUI(TMP_Text text)
     {
         stylePointsText = text;

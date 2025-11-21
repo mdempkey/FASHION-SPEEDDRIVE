@@ -15,11 +15,11 @@ public class DropZone : MonoBehaviour, IDropHandler
         // Only accept if the category matches
         if (draggedItem.category.ToLower() == acceptedCategory.ToLower())
         {
-            // Snap item into this slot
+            // Snaps item into this slot
             draggedItem.transform.SetParent(transform, true);
             draggedItem.transform.localPosition = Vector3.zero;
 
-            // Tell StyleManager what was placed
+            // Tells StyleManager what was placed
             if (styleManager != null)
             {
                 styleManager.SelectOutfitPiece(acceptedCategory, draggedItem.itemName);

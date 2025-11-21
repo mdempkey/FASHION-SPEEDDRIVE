@@ -132,8 +132,7 @@ public class StyleManager : MonoBehaviour
             score += 10;
         if (pants == "beach_pants")
             score += 40;
-
-        // Check for complete beach outfit
+        
         bool isFullOutfit = ((top == "beach_shirt") &&
                              (pants == "beach_pants") &&
                              (shoes == "beach_shoes") &&
@@ -170,7 +169,6 @@ public class StyleManager : MonoBehaviour
         string themeText = currentTheme == OutfitTheme.Disco ? "Disco" : "Beach";
         Debug.Log($"✨ Full {themeText} outfit complete! Styled look applied and slots cleared!");
         
-        // Play success sound
         if (completeSound != null)
             completeSound.Play();
 
