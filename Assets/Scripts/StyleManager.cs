@@ -1,11 +1,14 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // for scene loading
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StyleManager : MonoBehaviour
 {
+    [Header("Theme Selection")]
+    public OutfitTheme currentTheme = OutfitTheme.Disco;
+
     [Header("Points & UI")]
     public int stylePoints = 0;
     public TMP_Text stylePointsText;
@@ -32,12 +35,18 @@ public class StyleManager : MonoBehaviour
     public Image accessorySlot;
 
     [Header("Scene Transition")]
-    public string nextSceneName = "PartyScene"; // set in Inspector
-    public float sceneDelay = 3f; // seconds before switching
+    public string nextSceneName = "PartyScene";
+    public float sceneDelay = 3f;
 
     private int lastPoints = 0;
     private Coroutine popCoroutine;
     private bool outfitComplete = false;
+
+    public enum OutfitTheme
+    {
+        Disco,
+        Beach
+    }
 
     void Awake()
     {
@@ -67,6 +76,21 @@ public class StyleManager : MonoBehaviour
 
     void EvaluateOutfit()
     {
+        switch (currentTheme)
+        {
+            case OutfitTheme.Disco:
+                EvaluateDiscoOutfit();
+                break;
+            case OutfitTheme.Beach:
+                EvaluateBeachOutfit();
+                break;
+        }
+
+        UpdateStylePointsUI();
+    }
+
+    void EvaluateDiscoOutfit()
+    {
         int score = 0;
 
         if (top == "disco_jacket")
@@ -84,10 +108,41 @@ public class StyleManager : MonoBehaviour
                              accessory == "disco_glasses");
 
         if (isFullOutfit)
-            score += 30;
+            score += 30; // bonus for complete outfit
 
         stylePoints = score;
-        UpdateStylePointsUI();
+
+        if (isFullOutfit && !outfitComplete)
+        {
+            ApplyStyledLook();
+            outfitComplete = true;
+        }
+    }
+
+    void EvaluateBeachOutfit()
+    {
+        int score = 0;
+
+        // Beach outfit scoring
+        if (top == "beach_shirt" || top == "tank_top")
+            score += 50;
+        if (shoes == "sandals" || shoes == "flip_flops")
+            score += 20;
+        if (accessory == "sunglasses" || accessory == "beach_hat")
+            score += 10;
+        if (pants == "beach_shorts" || pants == "swim_trunks")
+            score += 40;
+
+        // Check for complete beach outfit
+        bool isFullOutfit = ((top == "beach_shirt" || top == "tank_top") &&
+                             (pants == "beach_shorts" || pants == "swim_trunks") &&
+                             (shoes == "sandals" || shoes == "flip_flops") &&
+                             (accessory == "sunglasses" || accessory == "beach_hat"));
+
+        if (isFullOutfit)
+            score += 30; // bonus for complete outfit
+
+        stylePoints = score;
 
         if (isFullOutfit && !outfitComplete)
         {
@@ -106,19 +161,20 @@ public class StyleManager : MonoBehaviour
         // Clear outfit data
         top = pants = shoes = accessory = "";
 
-        // ✨ Clear the slot images
+        // Clear the slot images
         ClearSlotImage(topSlot);
         ClearSlotImage(pantsSlot);
         ClearSlotImage(shoesSlot);
         ClearSlotImage(accessorySlot);
 
-        Debug.Log("✨ Full outfit complete! Styled look applied and slots cleared!");
+        string themeText = currentTheme == OutfitTheme.Disco ? "Disco" : "Beach";
+        Debug.Log($"✨ Full {themeText} outfit complete! Styled look applied and slots cleared!");
         
-        // 🎵 Play success sound
+        // Play success sound
         if (completeSound != null)
             completeSound.Play();
 
-        // ⏳ Go to next scene after a short delay
+        // Go to next scene after a short delay
         StartCoroutine(GoToNextSceneAfterDelay());
     }
 
@@ -141,7 +197,7 @@ public class StyleManager : MonoBehaviour
         if (slot != null)
         {
             StartCoroutine(FadeOutSlot(slot));
-            slot.gameObject.SetActive(false); // hide the slot entirely
+            slot.gameObject.SetActive(false);
         }
     }
 
@@ -206,7 +262,7 @@ public class StyleManager : MonoBehaviour
         if (stylePoints != lastPoints)
         {
             if (stylePoints > lastPoints && pointSound != null)
-                pointSound.Play();  // 🎵 play sound when points increase
+                pointSound.Play();
 
             if (popCoroutine != null)
                 StopCoroutine(popCoroutine);

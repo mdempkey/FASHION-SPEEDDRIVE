@@ -52,6 +52,7 @@
     <Compile Include="Assets\Scripts\SceneExitFlasher.cs" />
     <Compile Include="Assets\Scripts\HouseTrigger.cs" />
     <Compile Include="Assets\Scripts\Boosters.cs" />
+    <Compile Include="Assets\Scripts\PersistentStyleManager.cs" />
     <Compile Include="Assets\Scripts\ImageSequence.cs" />
     <Compile Include="Assets\Scripts\CameraFollow2D.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />

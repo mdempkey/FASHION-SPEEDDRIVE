@@ -425,6 +425,7 @@
 "Assets/Scripts/HouseTrigger.cs"
 "Assets/Scripts/ImageSequence.cs"
 "Assets/Scripts/OLDCameraFollow.cs"
+"Assets/Scripts/PersistentStyleManager.cs"
 "Assets/Scripts/PopcornFadeAnimator_Fixed.cs"
 "Assets/Scripts/SceneExitFlasher.cs"
 "Assets/Scripts/SceneLoader.cs"
