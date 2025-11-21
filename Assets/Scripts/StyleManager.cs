@@ -124,20 +124,20 @@ public class StyleManager : MonoBehaviour
         int score = 0;
 
         // Beach outfit scoring
-        if (top == "beach_shirt" || top == "tank_top")
+        if (top == "beach_shirt")
             score += 50;
-        if (shoes == "sandals" || shoes == "flip_flops")
+        if (shoes == "beach_shoes")
             score += 20;
-        if (accessory == "sunglasses" || accessory == "beach_hat")
+        if (accessory == "beach_glasses")
             score += 10;
-        if (pants == "beach_shorts" || pants == "swim_trunks")
+        if (pants == "beach_pants")
             score += 40;
 
         // Check for complete beach outfit
-        bool isFullOutfit = ((top == "beach_shirt" || top == "tank_top") &&
-                             (pants == "beach_shorts" || pants == "swim_trunks") &&
-                             (shoes == "sandals" || shoes == "flip_flops") &&
-                             (accessory == "sunglasses" || accessory == "beach_hat"));
+        bool isFullOutfit = ((top == "beach_shirt") &&
+                             (pants == "beach_pants") &&
+                             (shoes == "beach_shoes") &&
+                             (accessory == "beach_glasses"));
 
         if (isFullOutfit)
             score += 30; // bonus for complete outfit
